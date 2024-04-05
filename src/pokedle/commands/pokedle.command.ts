@@ -1,10 +1,6 @@
 import { Command } from "commander";
-import { AxiosHttpClient } from "../../commons/utils/AxiosHttpClient";
-import { ChalkColorizer } from "../../commons/utils/ChalkColorizer";
-import { PokeApiProvider } from "../services/pokeapi.service";
-import { Pokedle } from "../games/pokedle.game";
-import { ConsoleInteraction } from "../../commons/utils/ConsoleInteraction";
-import { showBanner } from "../../commons/ui/banner";
+import { FigletBanner } from "../../commons/ui/FigletBanner";
+import { GameInitializer } from "../../commons/utils/GameInitializer";
 
 export const pokedleCommand = new Command("pokedle")
   .description("Start a game of Pokedle")
@@ -25,17 +21,7 @@ export const pokedleCommand = new Command("pokedle")
       process.exit(1);
     }
 
-    await showBanner("Pokedle");
-
-    const httpClient = new AxiosHttpClient();
-    const colorizer = new ChalkColorizer();
-    const pokemonProvider = new PokeApiProvider(httpClient);
-    const userInteraction = new ConsoleInteraction();
-    const pokedle = new Pokedle(
-      colorizer,
-      userInteraction,
-      pokemonProvider,
-      options.topGen
-    );
-    pokedle.start(options.types, options.firstLetter, options.number);
+    const banner = new FigletBanner();
+    await banner.show("Pokedle");
+    GameInitializer.startPokedle(options);
   });

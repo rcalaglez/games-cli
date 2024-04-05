@@ -1,5 +1,6 @@
 import { Colorizer } from "../../commons/interfaces/Colorizer";
 import { UserInteraction } from "../../commons/interfaces/UserInteraction";
+import { PokedleOptions } from "../interfaces/pokedle.options";
 import { PokemonProvider } from "../interfaces/pokemon-provider.interface";
 import {
   getRandomPokemonId,
@@ -27,21 +28,12 @@ export class Pokedle {
     private readonly userInteraction: UserInteraction,
     private readonly pokemonProvider: PokemonProvider,
     private readonly topGen: number = 8
-  ) {
-    this.colorizer = colorizer;
-    this.userInteraction = userInteraction;
-    this.pokemonProvider = pokemonProvider;
-    this.topGen = topGen;
-  }
+  ) {}
 
   /**
    * Inicia el juego cargando un Pokémon aleatorio y preparando el estado inicial.
    */
-  async start(
-    showTypes: boolean = false,
-    showFirstLetter: boolean = false,
-    showNumber: boolean = false
-  ) {
+  async start({ showTypes, showFirstLetter, showNumber }: PokedleOptions) {
     const pokemonId = getRandomPokemonId(this.topGen);
     if (showNumber) console.log("Pokedex number: ", pokemonId);
     try {
