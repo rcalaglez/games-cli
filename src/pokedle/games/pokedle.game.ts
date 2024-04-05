@@ -35,14 +35,22 @@ export class Pokedle {
   /**
    * Inicia el juego cargando un Pokémon aleatorio y preparando el estado inicial.
    */
-  async start() {
+  async start(showTypes: boolean = false, showFirstLetter: boolean = false) {
     const pokemonId = getRandomPokemonId();
     try {
       const pokemon = await this.pokemonProvider.getPokemonById(pokemonId);
       this.pokemonName = pokemon.name;
 
+      if (showTypes) {
+        const types = pokemon.types.join(", ");
+        console.log(`Types: ${types}`);
+      }
+
       console.log(`The Pokémon has ${this.pokemonName.length} letters.`);
-      this.guessLetters = Array(this.pokemonName.length).fill("_");
+      this.guessLetters = Array(this.pokemonName.length).fill(" _ ");
+      if (showFirstLetter) {
+        this.guessLetters[0] = this.pokemonName[0];
+      }
       this.makeGuess();
     } catch (error) {
       console.error("There was an error fetching the Pokémon.");
@@ -62,7 +70,7 @@ export class Pokedle {
       return;
     }
 
-    console.log(this.guessLetters.join(" "));
+    console.log(this.guessLetters.join("  "));
     this.userInteraction.question("Guess a Pokémon: ", (guess) => {
       if (!validateGuess(guess)) {
         console.log("Please enter a valid Pokémon name (letters only).");
@@ -83,6 +91,8 @@ export class Pokedle {
   private processGuess(guess: string) {
     if (guess.toLowerCase() === this.pokemonName.toLowerCase()) {
       console.log("Correct! You guessed the Pokémon!");
+      this.updateGuessLetters(guess);
+      console.log(this.guessLetters.join("  "));
       this.userInteraction.close();
       return;
     }
