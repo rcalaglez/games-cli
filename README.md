@@ -60,22 +60,34 @@ npm link
 
 Ahora, tu CLI estará disponible globalmente en tu máquina para fines de desarrollo. Puedes empezar a ejecutar comandos utilizando el nombre definido en tu package.json bajo el campo bin.
 
-## Modo de Uso como CLI
+## Modo de Uso
 
-Una vez instalado, puedes ejecutar tu CLI directamente desde la terminal. Por ejemplo, si has creado un comando greet:
+Una vez instalado, puedes ejecutar tu CLI directamente desde la terminal. Por ejemplo:
 
 ```bash
-your-cli greet
+play-game
 ```
 
 Para más información sobre los comandos disponibles y cómo utilizarlos, puedes ejecutar:
 
 ```bash
-your-cli --help
+play-game --help
 ```
 
 Esto mostrará una lista de todos los comandos disponibles y sus descripciones.
 
----
+## Lista de juegos
 
-Recuerda actualizar este README.md con información específica sobre tu CLI a medida que agregues nuevos comandos y características.
+### Pokedle
+
+Es un Wordle adaptado al mundo pokemon. En el cual inicialmente se te da una única pista, que es el número de letras. El usuario tiene 6 intentos para resolver el juego. En cada intento, cada letra que coincida en posición será dibujada en verde, y cada letra que no coincida en posición pero si esté contenida en el pokemon a adivinar sera coloreada de amarillo.
+
+Se tienen disponibles varias opciones, que se pueden consultar con el comando 'play-game pokedle --help':
+
+Options:
+--types Show the types of the Pokémon
+--top-gen < number > Set the top generation limit (between 1 and 9)
+--number Show the pokedex number
+--first-letter Show the first letter of the Pokémon name as a clue
+
+---

@@ -16,7 +16,9 @@ const userInteractionMock = {
 };
 
 const pokemonProviderMock = {
-  getPokemonById: jest.fn().mockResolvedValue({ id: 25, name: "pikachu" }),
+  getPokemonById: jest
+    .fn()
+    .mockResolvedValue({ id: 25, name: "pikachu", type: ["electric"] }),
 };
 
 const consoleSpyLog = jest.spyOn(console, "log").mockImplementation();

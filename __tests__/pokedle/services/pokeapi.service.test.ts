@@ -5,6 +5,7 @@ import { HttpClient } from "../../../src/commons/interfaces/HttpClient";
 const mockPokemonData = {
   id: 1,
   name: "bulbasaur",
+  types: ["grass", "poison"],
   // Agrega más datos de prueba si es necesario
 };
 
@@ -17,11 +18,14 @@ describe("PokeApiProvider", () => {
   it("should return a pokemon object when getPokemonById is called", async () => {
     const pokeApiProvider = new PokeApiProvider(mockHttpClient);
     const pokemon = await pokeApiProvider.getPokemonById(1);
-    console.log(pokemon);
 
     expect(mockHttpClient.get).toHaveBeenCalledWith(
       "https://pokeapi.co/api/v2/pokemon/1"
     );
-    expect(pokemon).toEqual({ id: 1, name: "bulbasaur" });
+    expect(pokemon).toEqual({
+      id: 1,
+      name: "bulbasaur",
+      types: ["grass", "poison"],
+    });
   });
 });
