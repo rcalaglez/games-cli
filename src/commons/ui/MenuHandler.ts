@@ -44,16 +44,22 @@ export class MenuHandler {
       {
         type: "number",
         name: "topGen",
-        message: "Limit to top generation (1-9):",
+        message: "Limit to top generation (1-8):",
         validate: (input: number) =>
-          (input >= 1 && input <= 9) ||
-          "Please enter a number between 1 and 9.",
+          (input >= 1 && input <= 8) ||
+          "Please enter a number between 1 and 8.",
         filter: (input: number) => Number(input), // Asegurar que el input es un número
       },
       {
         type: "confirm",
         name: "firstLetter",
         message: "Show the first letter of the Pokémon name as a clue?",
+        default: false,
+      },
+      {
+        type: "confirm",
+        name: "number",
+        message: "Would you like to show pokedex number?",
         default: false,
       },
       // Puedes añadir más opciones específicas aquí

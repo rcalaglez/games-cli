@@ -1,7 +1,7 @@
 import { Colorizer } from "../../commons/interfaces/Colorizer";
 import { UserInteraction } from "../../commons/interfaces/UserInteraction";
-import { PokedleOptions } from "../interfaces/pokedle.options";
 import { PokemonProvider } from "../interfaces/pokemon-provider.interface";
+import { PokedleOptions } from "../interfaces/pokedle-options.interface";
 import {
   getRandomPokemonId,
   updateGuessLetters,

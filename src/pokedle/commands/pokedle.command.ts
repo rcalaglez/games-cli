@@ -20,8 +20,5 @@ export const pokedleCommand = new Command("pokedle")
       console.error("The --top-gen option must be a number between 1 and 9.");
       process.exit(1);
     }
-
-    const banner = new FigletBanner();
-    await banner.show("Pokedle");
     GameInitializer.startPokedle(options);
   });
