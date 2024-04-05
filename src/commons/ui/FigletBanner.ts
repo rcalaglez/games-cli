@@ -10,14 +10,19 @@ export class FigletBanner implements IBanner {
     this.colorizer = new ChalkColorizer();
   }
 
-  async show(title: string): Promise<void> {
+  async show(title: string, styleFn?: (text: string) => string): Promise<void> {
     return new Promise((resolve, reject) => {
       figlet(title, (err, data) => {
         if (err) {
           reject(err);
         } else {
-          const colorizer = new ChalkColorizer();
-          if (data) console.log(colorizer.green(data));
+          // Aplicar estilo personalizado si se proporciona, de lo contrario, usar un estilo predeterminado
+          if (data) {
+            const styledText = styleFn
+              ? styleFn(data)
+              : this.colorizer.green(data);
+            console.log(styledText);
+          }
           resolve();
         }
       });

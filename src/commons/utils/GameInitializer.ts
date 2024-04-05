@@ -10,7 +10,9 @@ import { ConsoleInteraction } from "./ConsoleInteraction";
 export class GameInitializer {
   static async startPokedle(options: any) {
     const banner = new FigletBanner();
-    await banner.show("Pokedle");
+    const withPokedleStyle = (text: string) =>
+      new ChalkColorizer().yellowTextWithBlueBg(text);
+    await banner.show("Pokedle", withPokedleStyle);
 
     const httpClient = new AxiosHttpClient();
     const colorizer = new ChalkColorizer();
