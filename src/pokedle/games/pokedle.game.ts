@@ -25,18 +25,25 @@ export class Pokedle {
   constructor(
     private readonly colorizer: Colorizer,
     private readonly userInteraction: UserInteraction,
-    private readonly pokemonProvider: PokemonProvider
+    private readonly pokemonProvider: PokemonProvider,
+    private readonly topGen: number = 8
   ) {
     this.colorizer = colorizer;
     this.userInteraction = userInteraction;
     this.pokemonProvider = pokemonProvider;
+    this.topGen = topGen;
   }
 
   /**
    * Inicia el juego cargando un Pokémon aleatorio y preparando el estado inicial.
    */
-  async start(showTypes: boolean = false, showFirstLetter: boolean = false) {
-    const pokemonId = getRandomPokemonId();
+  async start(
+    showTypes: boolean = false,
+    showFirstLetter: boolean = false,
+    showNumber: boolean = false
+  ) {
+    const pokemonId = getRandomPokemonId(this.topGen);
+    if (showNumber) console.log("Pokedex number: ", pokemonId);
     try {
       const pokemon = await this.pokemonProvider.getPokemonById(pokemonId);
       this.pokemonName = pokemon.name;

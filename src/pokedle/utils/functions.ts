@@ -1,8 +1,10 @@
 import { Colorizer } from "../../commons/interfaces/Colorizer";
-import { TOTAL_POKEMONS } from "./constants";
+import { generationMaxIds } from "./constants";
 
-export const getRandomPokemonId = () =>
-  Math.floor(Math.random() * TOTAL_POKEMONS) + 1;
+export const getRandomPokemonId = (topGen: number = 9) => {
+  const maxId = generationMaxIds[topGen];
+  return Math.floor(Math.random() * maxId) + 1;
+};
 
 export const validateGuess = (guess: string): boolean => {
   // Valida que la entrada sea solo letras y no esté vacía
