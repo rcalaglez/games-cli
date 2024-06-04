@@ -86,10 +86,12 @@ Es un Wordle adaptado al mundo pokemon. En el cual inicialmente se te da una ún
 
 Se tienen disponibles varias opciones, que se pueden consultar con el comando 'play-game pokedle --help':
 
+```
 Options:
 --types Show the types of the Pokémon
 --top-gen < number > Set the top generation limit (between 1 and 9)
 --number Show the pokedex number
 --first-letter Show the first letter of the Pokémon name as a clue
+```
 
 ---
