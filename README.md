@@ -6,6 +6,7 @@ Este proyecto sirve como un punto de partida para la creación de aplicaciones C
 
 ## Estructura de Directorios
 
+```
 cli-boilerplate/
 ├── src/
 │ ├── commands/ **# Comandos específicos del CLI**
@@ -19,6 +20,7 @@ cli-boilerplate/
 ├── jest.config.js
 ├── .gitignore
 └── README.md
+```
 
 ## Características
 
